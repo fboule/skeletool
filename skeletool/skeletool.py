@@ -22,8 +22,12 @@
 import sys
 from options import *
 from help import *
+import help
 
 class MainApp(object):
+    def __init__(self, name = 'skeletool'):
+        help.APPNAME = name
+
     def run(self):
         helpctrl = HelpController()
         optsctrl = OptionsController()

@@ -18,11 +18,10 @@
 # along with skeletool.  If not, see <http://www.gnu.org/licenses/>.
 
 from controller import *
-import __main__
 
 __all__ = [ 'HelpController' ]
 
-__main__.APPNAME = 'skeletool'
+APPNAME = 'skeletool'
 
 class HelpController(Controller):
     def default(self, *kargs, **kwargs):
@@ -37,7 +36,7 @@ class HelpController(Controller):
             print(self._command_usage(*kargs, **kwargs))
 
     def _global_usage(self):
-        s = 'Usage: %s [command] [options] [args]\n\n' % __main__.APPNAME
+        s = 'Usage: %s [command] [options] [args]\n\n' % APPNAME
         s = s + 'Available commands:\n'
 
         lst = {}
@@ -96,7 +95,7 @@ class HelpController(Controller):
             fmt = '%' + str(n) + 's%s\n'
             for usage in method.usage['usage']:
                 line = fmt % (hdr, usage)
-                s = s + line % { 'exec': __main__.APPNAME }
+                s = s + line % { 'exec': APPNAME }
                 hdr = ''
 
         if longdesc != '': s = s + '\n  ' + longdesc + '\n'
