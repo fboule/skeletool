@@ -24,8 +24,9 @@ from options import *
 from help import *
 import help
 
+
 class MainApp(object):
-    def __init__(self, name = 'skeletool'):
+    def __init__(self, name='skeletool'):
         help.APPNAME = name
 
     def run(self):
@@ -57,9 +58,9 @@ class MainApp(object):
             helpctrl.help(args[0])
             sys.exit(2)
 
+
 def run():
     MainApp().run()
 
 if __name__ == '__main__':
     run()
-

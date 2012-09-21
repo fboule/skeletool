@@ -17,6 +17,7 @@
 # You should have received a copy of the GNU General Public License
 # along with skeletool.  If not, see <http://www.gnu.org/licenses/>.
 
+
 class Container(object):
     @staticmethod
     def __new__(cls):

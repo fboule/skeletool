@@ -20,6 +20,7 @@
 from new import instancemethod
 from container import Container
 
+
 class Controllers(Container):
     def command(self, commandid):
         for controller in self._items:
@@ -31,6 +32,7 @@ class Controllers(Container):
 
         return None
 
+
 class Controller(object):
     @staticmethod
     def __new__(cls):
@@ -40,7 +42,7 @@ class Controller(object):
         if '_instance' not in dir(cls):
             cls._instance = super(Controller, cls).__new__(cls)
             Controllers().set(cls._instance)
-        
+
         return cls._instance
 
     def actions(self):

@@ -22,6 +22,7 @@ import getopt
 from help import HelpController
 from controller import *
 
+
 class OptionsController(Controller):
     _g_shortopts = ''
     _g_longopts = ''
@@ -38,7 +39,7 @@ class OptionsController(Controller):
         commands = Controllers().all()
 
         if len(kargs) > 0:
-            commands = [ kargs[0].__class__ ]
+            commands = [kargs[0].__class__]
 
         for controllerid in commands:
             controller = Controllers().get(controllerid)
@@ -85,24 +86,25 @@ class OptionsController(Controller):
                     dictopts[mapping[kk + ':']] = v
 
         return (dictopts, args)
-        
+
     def action(self, args):
         if len(args) == 0:
             raise SyntaxError()
 
         controller = Controllers().command(args[0])
 
-        if controller is None: 
+        if controller is None:
             raise SyntaxError('command %s not recognized' % args[0])
 
         if len(args) > 1:
             action = None
             for method in controller.actions():
-                if args[1] == method.__name__: action = method
+                if args[1] == method.__name__:
+                    action = method
             if action is None:
                 raise SyntaxError('Argument %s does not exist.' % args[1])
         else:
-             action = controller.default
+            action = controller.default
 
         return action
 
@@ -111,4 +113,3 @@ OptionsController()
 if __name__ == '__main__':
     oc = OptionsController()
     print(oc.options())
-
