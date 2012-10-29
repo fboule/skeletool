@@ -24,10 +24,10 @@ from options import *
 from help import *
 import help
 
-
 class MainApp(object):
-    def __init__(self, name='skeletool'):
+    def __init__(self, name='skeletool', dbinit = None):
         help.APPNAME = name
+        self.__dbinit = dbinit
 
     def run(self):
         helpctrl = HelpController()
@@ -50,7 +50,7 @@ class MainApp(object):
             helpctrl.help(args[0])
             sys.exit(2)
 
-        dbinit(**opts)
+        if self.__dbinit is not None: self.__dbinit(**opts)
 
         try:
             action(*args[2:], **opts)
