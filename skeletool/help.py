@@ -18,11 +18,11 @@
 # along with skeletool.  If not, see <http://www.gnu.org/licenses/>.
 
 from controller import *
-import __main__
 
 __all__ = ['HelpController']
 
 APPNAME = 'skeletool' 
+VERSION = ''
 
 class HelpController(Controller):
     def default(self, *kargs, **kwargs):
@@ -37,12 +37,10 @@ class HelpController(Controller):
             print(self._command_usage(*kargs, **kwargs))
 
     def _global_usage(self):
-        FULLAPPNAME = APPNAME
+        s = APPNAME + '\n\n'
+        if VERSION != '': 
+            s = APPNAME + ' v' + VERSION + '\n\n'
 
-        if 'VERSION' in dir(__main__):
-            FULLAPPNAME += ' v' + __main__.VERSION
-
-        s = FULLAPPNAME + '\n\n'
         s = s + 'Usage: %s [command] [options] [args]\n\n' % APPNAME
         s = s + 'Available commands:\n'
 

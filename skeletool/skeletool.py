@@ -25,8 +25,9 @@ from help import *
 import help
 
 class MainApp(object):
-    def __init__(self, name='skeletool', dbinit = None):
+    def __init__(self, name='skeletool', version = '', dbinit = None):
         help.APPNAME = name
+        help.VERSION = version
         self.__dbinit = dbinit
 
     def run(self):
